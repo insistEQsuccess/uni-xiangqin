@@ -45,7 +45,7 @@
 	    }
 	    return {
 	      list,
-	      goToDetail,
+	      goToDetail, 
 	      getData
 	    }
 	  },
