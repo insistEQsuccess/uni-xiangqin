@@ -21,6 +21,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/groups/groups",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "微信群",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navitationStyle": "custom",
