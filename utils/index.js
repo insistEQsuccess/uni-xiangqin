@@ -27,3 +27,14 @@ export function encrypt(){
 export function decropt (enStr) {
   return CryptoJS.AES.decrypt(enStr, MIYAO).toString(CryptoJS.enc.Utf8);
 }
+// 获取路由参数
+export function getRouteParam () {
+	const routes = getCurrentPages();
+	const param = routes[0].$page.fullPath.split('?')[1].split('&')
+	const result = {}
+	for (const item of param) {
+	    const [key, value] = item.split('=')
+		result[key] = value
+	}
+	return result
+}

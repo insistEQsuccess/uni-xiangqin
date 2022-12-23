@@ -12,6 +12,15 @@
 				"navigationBarTitleText": "来自开发者的信"
 			}
 		}
+        ,{
+            "path" : "pages/detail/detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "详情",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navitationStyle": "custom",

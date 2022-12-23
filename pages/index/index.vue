@@ -33,15 +33,16 @@
 	    }
 	    getData()
 	    function goToDetail (it) {
-	      const perfect = uni.getStorageSync({ key: 'perfect' })
-	      if (perfect == '0' || !perfect) {
-			uni.showToast({
-				title: '请您登陆'
-			})
-			uni.navigateTo({ url: '/login' })
-	        return;
-	      }
-		  uni.navigateTo({ url: '/detail?userId=' + it.userId })
+			uni.navigateTo({ url: '/pages/detail/detail?userId=' + it.userId })
+	   //      const perfect = uni.getStorageSync({ key: 'perfect' })
+	   //      if (perfect == '0' || !perfect) {
+				// uni.showToast({
+				// 	title: '请您登陆'
+				// })
+				// uni.navigateTo({ url: '/login' })
+	   //      return;
+	   //      }
+		  //   uni.navigateTo({ url: '/detail?userId=' + it.userId })
 	    }
 	    return {
 	      list,
