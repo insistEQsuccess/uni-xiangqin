@@ -2,7 +2,7 @@
 	<view className="list-box">
 	    <view class="list-scroll">
 	      <view class="list-item" v-for="(item, index) in list" :key="index" @click="goToDetail(item)">
-	        <image mode="aspectFit" :src="item.icon" alt=""></image>
+	        <image mode="scaleToFill" :src="item.icon" alt=""></image>
 	        <view class="item-info">
 	          <view class="user-info">{{item.title}}</view>
 	          <view class="user-tag">
