@@ -3,7 +3,7 @@
     <view class="detail-box1">
       <view class="detail-success" v-if="exchangeCardUserVo.exchangeCardStatus === 2">
         <view class="phone-number"><text>TA的联系方式：</text><text>{{exchangeCardUserVo.cellPhone}}</text></view>
-        <image mode="aspectFit" src="../../static/image/copy-btn.png" alt="" @click="handleCopy"></image>
+        <image mode="aspectFill" src="../../static/image/copy-btn.png" alt="" @click="handleCopy"></image>
       </view>
       <view class="detail-fail" v-if="exchangeCardUserVo.exchangeCardStatus === 3">
         <text>对方拒绝与您交换联系方式，一周内不能重新发起</text>
@@ -58,7 +58,7 @@
       <view class="self-intro-box">
         <view class="intro-title">补充说明</view>
         <view class="intro-list">
-          <view class="intro-item">活泼型-开朗的性格，喜欢玩，很乐观， 话特别多，喜欢新鲜，富有多姿多彩的 创造力</view>
+          <view class="intro-item">{{spouseRemark[0].value}}</view>
         </view>
       </view>
     </view>
@@ -314,7 +314,7 @@ export default defineComponent({
         display: flex;
         flex-wrap: nowrap;
         list-style: none;
-        li{
+        view{
           flex-shrink: 0;
           width: 200rpx;
           height: 200rpx;
@@ -361,7 +361,7 @@ export default defineComponent({
         list-style: none;
         display: flex;
         flex-wrap: wrap;
-        li{
+        view{
           display: flex;
           width: 50%;
           box-sizing: border-box;

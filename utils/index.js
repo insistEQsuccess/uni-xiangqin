@@ -31,6 +31,7 @@ export function decropt (enStr) {
 export function getRouteParam () {
 	const routes = getCurrentPages();
 	const param = routes[0].$page.fullPath.split('?')[1].split('&')
+	console.log(param)
 	const result = {}
 	for (const item of param) {
 	    const [key, value] = item.split('=')
