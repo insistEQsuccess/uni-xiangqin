@@ -30,8 +30,7 @@ export function decropt (enStr) {
 // 获取路由参数
 export function getRouteParam () {
 	const routes = getCurrentPages();
-	const param = routes[0].$page.fullPath.split('?')[1].split('&')
-	console.log(param)
+	const param = routes[routes.length - 1].$page.fullPath.split('?')[1].split('&')
 	const result = {}
 	for (const item of param) {
 	    const [key, value] = item.split('=')

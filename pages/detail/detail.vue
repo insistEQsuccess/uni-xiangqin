@@ -33,7 +33,7 @@
       </view>
       <view class="image-box" v-show="lifePhoto.length">
         <view>
-          <view v-for="(item, index) in lifePhoto" :key="index">
+          <view v-for="(item, index) in lifePhoto" :key="index" @click="previewLifeImage(index)">
             <image mode="aspectFit" :src="item" alt=""></image>
           </view>
         </view>
@@ -58,7 +58,7 @@
       <view class="self-intro-box">
         <view class="intro-title">补充说明</view>
         <view class="intro-list">
-          <view class="intro-item">{{spouseRemark[0].value}}</view>
+          <view class="intro-item">{{spouseRemark[0] && spouseRemark[0].value}}</view>
         </view>
       </view>
     </view>
@@ -74,15 +74,14 @@
   </view>
 </template>
 <script>
-import { defineComponent, reactive, watch, ref } from 'vue'
+import { defineComponent, reactive, watch, ref, onMounted } from 'vue'
 import { getDetails } from '../../apis/url.js'
 import { getRouteParam } from '../../utils/index.js'
 
 export default defineComponent({
   name: 'Detail',
   setup() {
-	const param = getRouteParam()
-    const userId = param.userId
+    let userId = ''
     const icon = ref('')
     const lifePhoto = reactive([])
     const selfIntroduce = reactive([])
@@ -126,20 +125,24 @@ export default defineComponent({
         uni.showToast({title: ret.message})
       }
     }
-    getData()
-    function previewLifeImage () {
-      ImagePreview(['https://unpkg.com/@vant/static/apple-1.jpeg']);
+	onMounted(() => {
+		const param = getRouteParam()
+		userId = param.userId
+		getData()
+	})
+    function previewLifeImage (index) {
+		uni.previewImage({
+			current: index || 0,
+			urls: lifePhoto
+		});
     }
     function handleCopy () {
-      const input = document.createElement('input');
-      input.setAttribute('readonly', 'readonly');
-      input.setAttribute('value', exchangeCardUserVo.cellPhone);
-      document.body.appendChild(input);
-      input.setSelectionRange(0, 9999);
-      input.select();
-      document.execCommand('copy');
-      document.body.removeChild(input);
-      ret.message({title: '复制成功'})
+	  uni.setClipboardData({
+		  data: exchangeCardUserVo.cellPhone,
+		  success: function () {
+			  uni.showToast({title: '复制成功'})
+		  }
+	  });
     }
     return {
       icon,
@@ -404,6 +407,7 @@ export default defineComponent({
     // background: #fff;
     .exchange-btn{
       width: 702rpx;
+	  height: 104rpx;
       margin: 40rpx auto 40rpx;
       image{
         width: 100%;
